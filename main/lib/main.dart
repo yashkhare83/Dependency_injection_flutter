@@ -5,14 +5,7 @@ import 'package:main/starbucks.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MultiProvider(providers: [
-    Provider(
-      create: (context) => CoffeeService(),
-    ),
-    ProxyProvider<CoffeeService, Starbucks>(
-      update: (_, coffeeService, __) => Starbucks(coffeeService),
-    )
-  ], child: const MainApp()));
+  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
@@ -20,8 +13,16 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Customer()
+    return MultiProvider(
+      providers: [
+        Provider(
+          create: (context) => CoffeeService(),
+        ),
+        ProxyProvider<CoffeeService, Starbucks>(
+          update: (_, coffeeService, __) => Starbucks(coffeeService),
+        )
+      ],
+      child: MaterialApp(home: Customer()),
     );
   }
 }
