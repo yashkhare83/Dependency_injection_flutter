@@ -12,5 +12,5 @@ Dependency Injection helps in building scalable and maintainable Flutter apps by
 
 ### Translating to Code
 - Customer: The widget that needs some data or service.
-- Starbucks: The class that uses the service (e.g., a widget using a weather service).
+- Starbucks: The class that uses the service (e.g., a widget using a coffee service).
 - Ingredients Provider: The dependency injection mechanism (like Provider in Flutter) that supplies the necessary services.
